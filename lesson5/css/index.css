@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-size: 62.5%;
+}
+a{
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+}
+
+#app{
+    width: 1200px;
+    margin: 0 auto;
+    height: 500px;
+}
+
+#container{
+    display: flex;
+    height: 100%; 
+}
+
+#sidebar{
+    width: 200px;
+    box-sizing: border-box;
+    border: 1px solid #888;
+}
+#sibebar ul{
+    margin: 10px;
+    display:flex;
+    flex-direction: column;
+}
+
+#sidebar ul li{
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+
+
+#content{
+    flex-grow: 1;
+    box-sizing: border-box;
+    border: 1px solid #888;
+    border-left: none;
+}

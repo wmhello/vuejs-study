@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue-router的应用</title>
+     <link rel="stylesheet" href="./css/index.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div id="container">
+             <div id="sidebar">
+               <ul>
+                <li><a href="#/bj1">高一（1）班</a></li>
+                <li><a href="#/bj2">高一（2）班</a></li>
+                <li><a href="#/bj3">高一（3）班</a></li>
+               </ul>
+             </div>
+             <div id="content">
+                <router-view></router-view>
+             </div>
+        </div> 
+
+    </div>
+    <script>
+       var F1 = {
+           data: function() {
+               return {
+                   tips: '高一（1）班'
+               }
+           },
+           template:"<div>{{tips}}</div>"
+       }
+       var F2 = {
+           data: function() {
+               return {
+                   tips: '高一（2）班'
+               }
+           },
+           template:"<div>{{tips}}</div>"
+       }
+       var F3 = {
+           data: function() {
+               return {
+                   tips: '高一（3）班'
+               }
+           },
+           template:"<div>{{tips}}</div>"
+       }
+
+       var routes = [
+           {
+               path: '/',
+               component: F1
+           },
+
+          {
+              path:'/bj1',
+              component: F1
+          },
+          {
+              path:'/bj2',
+              component: F2
+          },
+          {
+              path:'/bj3',
+              component: F3
+          }
+       ];
+        
+       var router = new VueRouter({
+           routes
+       }) 
+
+     
+       var app = new Vue({
+           el: '#app',
+           data: {
+               title: 'Vue-router的应用'
+           },
+           router
+       })
+    </script>
+    
+</body>
+</html>
