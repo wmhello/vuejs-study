@@ -26,49 +26,38 @@
         </div> 
 
     </div>
+    <script src="./js/components.js"></script>
     <script>
-       var F1 = {
-           data: function() {
-               return {
-                   tips: '高一（1）班'
-               }
-           },
-           template:"<div>{{tips}}</div>"
-       }
-       var F2 = {
-           data: function() {
-               return {
-                   tips: '高一（2）班'
-               }
-           },
-           template:"<div>{{tips}}</div>"
-       }
-       var F3 = {
-           data: function() {
-               return {
-                   tips: '高一（3）班'
-               }
-           },
-           template:"<div>{{tips}}</div>"
-       }
-
        var routes = [
            {
                path: '/',
-               component: F1
+               redirect: '/bj1'
            },
-
           {
-              path:'/bj1',
+              path:'/admin',
               component: F1
           },
           {
+              path: '/bj1/:id',
+              component: F4,
+              name: 'edit'
+          },
+          {
               path:'/bj2',
-              component: F2
+              component: F2,
+              name: 'bj2',
+              meta: {
+                  auth: true
+              }
           },
           {
               path:'/bj3',
-              component: F3
+              component: F3,
+              beforeEnter: function(to, from, next){
+                  console.log('路由表内的导航');
+                  
+                  next()
+              }
           }
        ];
         
@@ -76,13 +65,40 @@
            routes
        }) 
 
+       router.beforeEach(function(to, from, next){
+         if (to.meta.auth) {
+            var pwd = prompt('请输入密码', 'test')
+            if (pwd === 'admin') {
+                next()
+            } else {
+                alert('密码输入不争取，不能访问该内容')
+            }
+         } else {
+             next()
+         }            
+       })
+
+       router.afterEach(function(to, from){
+           console.log('跳转完成');   
+       })
+
      
        var app = new Vue({
            el: '#app',
            data: {
                title: 'Vue-router的应用'
            },
-           router
+           router,
+           methods: {
+               nav(e,url){
+                   // console.log(e);
+                   e.preventDefault()                  
+                   if (this.$route.path === url) {
+                   } else {
+                       this.$router.push({name: 'edit', params:{id:2}, query: {action: 'getInfo'}})
+                   }
+               }
+           }
        })
     </script>
     
