@@ -50,3 +50,32 @@
    export    =>  导出内容
 
 
+## Promise
+>  用于回调函数的书写，最主要是用于和API的交互 axios
+
+~~~
+$.ajax({
+    url: '/students',
+    method: 'get',
+    success: funciton(res) {
+        let id = res.data[0].id
+        $.ajax({
+            url: '/result/'+ id,
+            method: 'get',
+            success: function (res) {
+
+            }
+        })
+    }
+})
+~~~
+
+>  回调嵌套
+
+
+## async与await
+
+
+
+
+
