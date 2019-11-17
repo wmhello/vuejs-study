@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6的模块导入</title>
+    <script src="https://cdn.bootcss.com/es6-promise/4.1.1/es6-promise.min.js"></script>
+    <script src="https://cdn.bootcss.com/es6-shim/0.35.5/es6-shim.min.js"></script>
+</head>
+<body>
+    
+    <!-- <script src="./export.js"></script> -->
+    <script >
+        import sum from './export'
+        let total = sum(10, 20, 30, 40)
+        console.log(total);
+    </script>
+</body>
+</html>
